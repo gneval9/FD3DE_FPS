@@ -14,6 +14,8 @@ fd3de.move("z", -300, pir)
 
 fd3de.perspective = "up"
 
+deg_old = 0
+
 
 def orbit(obj, target, angle):
 	angle = m.radians(angle) * -1
@@ -35,7 +37,7 @@ def orb_rot(obj, target):
 
 	rel_deg = fd3de.utils.relative_deg(p1, p2) * -1
 	
-	obj["rotation"][1] = rel_deg
+	obj["rotation"][1] = deg_old - rel_deg
 
 
 
