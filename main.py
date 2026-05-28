@@ -61,7 +61,7 @@ while True:
 		cubo["position"][2] += 10
 
 
-	elif KB.is_pressed("esc"):
+	elif KB.is_pressed("q"):
 		sys.exit()
 	
 
