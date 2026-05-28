@@ -2,6 +2,8 @@ import fd3de
 import time
 import math as m
 import keyboard as KB
+import sys
+
 
 cubo_load = fd3de.load("Modelos/cubo.fd3de")
 pir_load = fd3de.load("Modelos/piramide.fd3de")
@@ -57,6 +59,10 @@ while True:
 	
 	elif KB.is_pressed("down"):
 		cubo["position"][2] += 10
+
+
+	elif KB.is_pressed("esc"):
+		sys.exit()
 	
 
 
