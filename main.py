@@ -20,6 +20,7 @@ deg_old = 0
 
 
 def orbit(obj, target, angle):
+	obj["rotation"][1] += angle
 	angle = m.radians(angle) * -1
 
 	x = obj["position"][0] - target["position"][0]
@@ -30,38 +31,33 @@ def orbit(obj, target, angle):
 
 	obj["position"][0] = nX + target["position"][0]
 	obj["position"][2] = nZ + target["position"][2]
-
-
-
-def orb_rot(obj, target):
-	p1 = (obj["position"][0], obj["position"][2])
-	p2 = (target["position"][0], target["position"][2])
-
-	rel_deg = fd3de.utils.relative_deg(p1, p2) * -1
-	
-	obj["rotation"][1] = deg_old - rel_deg
-
+		
 
 
 
 
 while True:
 	if KB.is_pressed("right"):
-		orbit(cubo, pir, -3)
-		orb_rot(cubo, pir)
+		orbit(cubo, pir, -5)
 
-	elif KB.is_pressed("left"):
-		orbit(cubo, pir, 3)
-		orb_rot(cubo, pir)
+	if KB.is_pressed("left"):
+		orbit(cubo, pir, 5)
 
-	elif KB.is_pressed("up"):
+	if KB.is_pressed("up"):
 		cubo["position"][2] += -10
 	
-	elif KB.is_pressed("down"):
+	if KB.is_pressed("down"):
 		cubo["position"][2] += 10
 
+	if KB.is_pressed("ctrl+right"):
+		cubo["position"][0] += -10
 
-	elif KB.is_pressed("q"):
+	if KB.is_pressed("ctrl+left"):
+		cubo["position"][0] += 10
+
+
+
+	if KB.is_pressed("q"):
 		sys.exit()
 	
 
